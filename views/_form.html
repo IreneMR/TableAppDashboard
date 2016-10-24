@@ -1,0 +1,89 @@
+<div class="data-container container">
+    <form class="form-horizontal" name="personalDataForm" ng-submit="personalDataForm.$valid&&vm.submitForm()"novalidate>
+      <legend>
+        Registration Form
+      </legend>
+            </br>
+            <div class="row">
+                    <div class="page-subtitle col-md-6"> These fields are your personal data </div>
+                    <div class="page-subtitle2 col-md-6"> All the fields with (*) are obligatory </div>
+            </div>
+          </br></br>
+
+          <div class="form-group">
+            <label for="first_name" class="col-md-1">First Name(*):</label>
+            <div class="col-md-5">
+              <input type="text" name="first_name" class="form-control" ng-model="vm.user.first_name" ng-required = "true" placeholder="first name"/>
+              <span ng-show="vm.user.first_name.$dirty && personalDataForm.first_name.$error.required" class="text-danger pull-right">The first name is required</span>
+            </div>
+            <label for="last_name" class="col-md-1">Last Name(*):</label>
+            <div class="col-md-4">
+              <input type="text" name="last_name" class="form-control" ng-model="vm.user.last_name" ng-required = "true" placeholder="last name"/>
+              <span ng-show="vm.user.last_name.$dirty && personalDataForm.last_name.$error.required" class="text-danger pull-right">The last name is required</span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="email" class="col-md-1">Email(*):</label>
+            <div class="col-md-5">
+                <input type="email" name="email" class="form-control" ng-model="vm.user.email" required placeholder="test@example.com"/>
+                <span ng-show="vm.user.email.$dirty && personalDataForm.email.$error.required" class="text-danger pull-right">The email is required</span>
+                <span ng-show="personalDataForm.email.$dirty && personalDataForm.email.$error.email" class="text-danger pull-right"> Email is invalid </span>
+            </div>
+          </div>
+          <div class="form-group">
+              <label for="phone" class="col-md-1">Phone(*):</label>
+              <div class="col-md-5">
+                <input type="tel" ng-class="" placeholder="ex: 999999999 (9 numbers)" ng-minlength="9" ng-maxlength="9" pattern="[0-9]{9}" class="form-control" ng-model="vm.user.phone" name="phone" id="phone" required>
+                <span ng-show="personalDataForm.phone.$dirty && personalDataForm.phone.$error.required" class="text-danger pull-right">Professional phone is required</span>
+                <span ng-show="personalDataForm.phone.$dirty && personalDataForm.phone.$error.tel" class="text-danger pull-right">Professional phone is invalid</span>
+              </div>
+          </div>
+
+          <div ng-show="vm.user.address!==undefined">
+              <div class="form-group">
+                  <label class="control-label col-md-1">Address 1 </label>
+                  <div class="col-md-5">
+                    <input type="text" class="form-control" ng-model="address.street1" placeholder="Address 1"/>
+                  </div>
+                  <label class="control-label col-md-1">Address 2 </label>
+                  <div class="col-md-5">
+                    <input type="text" class="form-control" ng-model="address.street2" placeholder="Address 2"/>
+                  </div>
+              </div>
+              <div class="form-group">
+                  <label class="control-label col-md-1">City </label>
+                  <div class="col-md-5">
+                      <input type="text" class="form-control" ng-model="address.city" placeholder="Pune"/>
+                  </div>
+                  <label class="control-label col-md-1">State </label>
+                  <div class="col-md-5">
+                      <input type="text" class="form-control" ng-model="address.state" placeholder="MH"/>
+                  </div>
+              </div>
+              <div class="form-group">
+                  <label class="control-label col-md-1">Country</label>
+                  <div class="col-md-5">
+                      <input type="text" class="form-control" ng-model="address.country" placeholder="India"/>
+                  </div>
+                  <label class="control-label col-md-1">Zipcode </label>
+                  <div class="col-md-5">
+                      <input type="text" class="form-control" ng-model="address.zipcode" placeholder="12345"/>
+                  </div>
+              </div>
+              <hr/>
+          </div>
+      <div class="form-group">
+          <div class="col-md-5">
+              <a ng-click="vm.addAddress()" ng-hide="vm.user.address!==undefined" class="btn btn-success btn-xs">+ Add address </a>
+          </div>
+      </div>
+
+      <div class="form-group">
+          <div class="pull-left">
+              <a class="btn btn-default" href="/"> Back</a>
+              <button type="submit" class="btn btn-primary" ng-click="vm.submitForm()">Submit</button>
+          </div>
+      </div>
+    </form>
+</div>
