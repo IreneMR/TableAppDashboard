@@ -6,9 +6,12 @@
       vm.user = {};
       vm.submitForm = submitForm;
       vm.addAddress = addAddress;
-      function submitForm () {
-        UsersService.newUser(vm.user);
-        $location.path('/users');
+      function submitForm (personalDataForm) {
+        if (personalDataForm.$valid) {
+          UsersService.newUser(vm.user);
+          $location.path('/users');
+          return true
+        }
       }
       function addAddress () {
         vm.user.address = {};
